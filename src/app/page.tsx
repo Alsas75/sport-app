@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-12 p-8">
@@ -23,14 +21,14 @@ export default function Home() {
         </p>
         <p className="p-2">
           Хочешь добавить раздел с преимуществами или кнопками действия типа
-          "Начать курс"? Я подскажу!
+          Начать курс? Я подскажу!
         </p>
-        <a 
-        href="/sports" 
-        className="text-amber-950 px-4 py-2 rounded hover:bg-blue-700 transition decoration-solid"
-      >
-        Выбрать курс
-      </a>
+        <a
+          href="/sports"
+          className="text-amber-950 px-4 py-2 rounded hover:bg-blue-700 transition decoration-solid"
+        >
+          Выбрать курс
+        </a>
       </div>
     </div>
   );

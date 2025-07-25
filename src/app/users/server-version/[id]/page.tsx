@@ -1,33 +1,37 @@
 import { User } from "@/types";
 
-export default async function UserDetails({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const res = await fetch(`https://api.escuelajs.co/api/v1/users/${params.id}`);
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function UserDetails({ params }: PageProps) {
+  const { id } = params;
+  
+  const res = await fetch(`https://api.escuelajs.co/api/v1/users/${id}`);
   
   if (!res.ok) {
-    throw new Error("Failed to fetch user");
+    throw new Error(`Failed to fetch user with id: ${id}`);
   }
   
   const user: User = await res.json();
 
   return (
-    <div>
-      <h1>User Details</h1>
-      <div>
-        <h2>{user.name}</h2>
-        <p>Email: {user.email}</p>
-        <p>Role: {user.role}</p>
-        <p>Avatar: {user.avatar}</p>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">User Details</h1>
+      <div className="border p-4 rounded-lg">
+        <h2 className="text-xl font-semibold">{user.name}</h2>
+        <p className="mt-2"><span className="font-medium">Email:</span> {user.email}</p>
+        <p><span className="font-medium">Role:</span> {user.role}</p>
         {user.avatar && (
-          <img 
-            src={user.avatar} 
-            alt={`Avatar of ${user.name}`} 
-            width={100}
-            height={100}
-          />
+          <div className="mt-4">
+            <img 
+              src={user.avatar} 
+              alt={`Avatar of ${user.name}`} 
+              className="rounded-full w-24 h-24 object-cover"
+            />
+          </div>
         )}
       </div>
     </div>

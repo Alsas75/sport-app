@@ -1,3 +1,3 @@
 export default function OrganizationSettings() {
-    return <div>Organization Settings</div>;
-  }
+  return <div>Organization Settings</div>;
+}

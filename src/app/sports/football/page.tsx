@@ -1,28 +1,24 @@
-import React from "react";
-
 export default function Football() {
   return (
-    <div className="container mx-auto px-4 py-12 p-8">
-      <h1 className="text-3xl font-bold mb-6">Курс по футболу</h1>
-      <p className="mb-4">
-        Футбол - это не просто игра, это искусство, требующее техники, тактики и
-        командного духа.
-      </p>
-
-      <h2 className="text-xl font-semibold mt-6 mb-2">Темы курса:</h2>
-      <ul className="list-disc pl-5 mb-6">
-        <li className="mb-1">Основы техники владения мячом</li>
-        <li className="mb-1">Точность и сила удара</li>
-        <li className="mb-1">Дриблинг и обводка соперника</li>
-        <li className="mb-1">Тактические построения</li>
-        <li>Командная игра и позиционирование</li>
+    <section className="px-32 py-20">
+      <h2 className="font-bold text-4xl p-4 m-4">Курс по футболу</h2>
+      <h3 className="font-bold text-2xl p-4 m-4">Введение в футбол:</h3>
+      <ul className="px-6 mx-4 py-1 my-1 flex flex-wrap gap-2">
+        <li className="border py-2 px-4 border-gray-500 max-w-36 rounded-2xl shadow-1xl">
+          техника
+        </li>
+        <li className="border py-2 px-4 border-gray-500 max-w-36 rounded-2xl shadow-1xl">
+          пас
+        </li>
+        <li className="border py-2 px-4 border-gray-500 max-w-36 rounded-2xl shadow-1xl">
+          дриблинг
+        </li>
+        <li className="border py-2 px-4 border-gray-500 max-w-36 rounded-2xl shadow-1xl">
+          тактика
+        </li>
       </ul>
 
-      <h2 className="text-xl font-semibold mb-2">Для кого этот курс:</h2>
-      <p>
-        Подходит для начинающих и любителей, которые хотят улучшить свои навыки
-        игры в футбол. Рекомендуемый возраст: от 10 лет.
-      </p>
-    </div>
+      <p className="p-4 m-4">Целевая аудитория: подходит для начинающих</p>
+    </section>
   );
 }

@@ -1,39 +1,38 @@
 import { User } from "@/types";
+import { notFound } from "next/navigation";
+import Image from "next/image";
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default async function UserDetails({ params }: PageProps) {
-  const { id } = params;
-  
+export default async function UserInfo({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const id = (await params).id;
   const res = await fetch(`https://api.escuelajs.co/api/v1/users/${id}`);
-  
+  console.log("ID: ", id);
   if (!res.ok) {
-    throw new Error(`Failed to fetch user with id: ${id}`);
+    if (res.status === 404 || res.status === 400) {
+      notFound();
+    }
+    throw new Error("Failed to fetch users");
   }
-  
   const user: User = await res.json();
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">User Details</h1>
-      <div className="border p-4 rounded-lg">
-        <h2 className="text-xl font-semibold">{user.name}</h2>
-        <p className="mt-2"><span className="font-medium">Email:</span> {user.email}</p>
-        <p><span className="font-medium">Role:</span> {user.role}</p>
-        {user.avatar && (
-          <div className="mt-4">
-            <img 
-              src={user.avatar} 
-              alt={`Avatar of ${user.name}`} 
-              className="rounded-full w-24 h-24 object-cover"
-            />
-          </div>
-        )}
+    <section className="bg-secondary py-20 px-14 md:px-32 flex justify-center">
+      <div className="bg-primary w-64 p-8 flex flex-col items-center gap-6 rounded-2xl border border-border">
+        <h2>{user.name}</h2>
+        <Image
+        unoptimized
+          src={user.avatar}
+          alt={"avatar"}
+          width={300}
+          height={300}
+          className="rounded-2xl"
+        />
+        <p className="bg-secondary w-34 sm:w-28 md:w-60 lg:w-68">{user.email}</p>
+        
       </div>
-    </div>
+    </section>
   );
 }

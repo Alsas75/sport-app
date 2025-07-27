@@ -1,5 +1,6 @@
 import UserCard from "@/components/UserCard/UserCard";
 import { User } from "@/types";
+import Link from "next/link";
 
 export default async function UsersServerVersion() {
   const res = await fetch("https://api.escuelajs.co/api/v1/users", {
@@ -14,11 +15,12 @@ export default async function UsersServerVersion() {
 
   return (
     <div>
-      <ul>
-        {users.map((user: User) => (
-          <UserCard key={user.id} user={user} />
-        ))}
-      </ul>
+      {users.map((user: User) => (
+        <li key={user.id}>
+          {user.name}
+          <Link href={`/users/server-version/${user.id}`}>To user</Link>
+        </li>
+      ))}
     </div>
   );
 }

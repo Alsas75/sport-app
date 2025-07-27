@@ -60,10 +60,17 @@ export default async function CreateProduct() {
           <select
             id="categoryId"
             name="categoryId"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded bg-background text-foreground border-border
+             dark:bg-dark-background dark:text-dark-foreground dark:border-dark-border"
             required
           >
-            <option value="">Select a category</option>
+            <option
+              value=""
+              className="bg-background text-foreground 
+                            dark:bg-dark-background dark:text-dark-foreground"
+            >
+              Select a category
+            </option>
             {categories.map((category: Category) => (
               <option key={category.id} value={category.id}>
                 {category.name}

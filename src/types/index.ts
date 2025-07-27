@@ -16,7 +16,6 @@ export interface Category {
   slug: string;
 }
 
-
 export interface Product {
   id: number;
   slug: string;
@@ -25,4 +24,13 @@ export interface Product {
   description: string;
   category: Category;
   images: string[];
+}
+
+export interface PageProps {
+  params: {
+    id: string;
+  };
+  searchParams?: {
+    [key: string]: string | string[] | undefined;
+  };
 }

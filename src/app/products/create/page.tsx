@@ -1,4 +1,5 @@
 import { createProduct } from "@/app/actions/createProduct";
+import { Category } from "@/types";
 
 export default async function CreateProduct() {
   const res = await fetch("https://api.escuelajs.co/api/v1/categories");
@@ -63,7 +64,7 @@ export default async function CreateProduct() {
             required
           >
             <option value="">Select a category</option>
-            {categories.map((category: any) => (
+            {categories.map((category: Category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
               </option>

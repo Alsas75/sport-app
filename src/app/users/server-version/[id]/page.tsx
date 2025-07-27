@@ -23,15 +23,16 @@ export default async function UserInfo({
       <div className="bg-primary w-64 p-8 flex flex-col items-center gap-6 rounded-2xl border border-border">
         <h2>{user.name}</h2>
         <Image
-        unoptimized
+          unoptimized
           src={user.avatar}
           alt={"avatar"}
           width={300}
           height={300}
           className="rounded-2xl"
         />
-        <p className="bg-secondary w-34 sm:w-28 md:w-60 lg:w-68">{user.email}</p>
-        
+        <p className="bg-secondary w-26 sm:w-28 md:w-50 lg:w-60">
+          {user.email}
+        </p>
       </div>
     </section>
   );
